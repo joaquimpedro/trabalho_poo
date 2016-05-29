@@ -5,6 +5,7 @@
 #include "list.h"
 #include "setor.h"
 #include "curso.h"
+#include "aluno.h"
 
 using std::string;
 
@@ -17,6 +18,7 @@ class Universidade {
     List<Setor> *setores;
     List<Curso> *cursos;
     List<Disciplina> *disciplinas;
+    List<Aluno> *alunos;
 
     public:
     Universidade();
@@ -38,6 +40,8 @@ class Universidade {
     List<Curso> *getCursos();
 
     List<Disciplina> *getDisciplinas();
+
+    List<Aluno> *getAlunos();
 
 
 };

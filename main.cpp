@@ -138,6 +138,84 @@ void criarTurma(Universidade *universidade) {
     curso->getDisciplinas()->get(escolha - 1)->getTurmas()->add(new Turma(nome));
 }
 
+void criarAluno(Universidade *universidade) {
+    cout << "Qual Curso: " << endl;
+    int escolha = -1;
+    for (int i = 0; i < universidade->getCursos()->getSize(); i++) {
+        cout << (i + 1) << " " << universidade->getCursos()->get(i)->getDescricao() << endl;
+    }
+
+    cout << "0 - Cancelar" << endl;
+    cin >> escolha;
+    if (escolha == 0) {
+        return;
+    }
+
+    Curso *curso = universidade->getCursos()->get(escolha - 1);
+
+    string nome;
+    cout << "Nome: " << endl;
+    cin >> nome;
+
+    int idade;
+    cout << "Idade: " << endl;
+    cin >> idade;
+
+    string matricula;
+    cout << "Matricula: " << endl;
+    cin >> matricula;
+
+    Aluno *aluno = new Aluno(nome, idade, matricula);
+    aluno->setCurso(curso);
+    curso->getAlunos()->add(aluno);
+    universidade->getAlunos()->add(aluno);
+}
+
+void vincularAlunoATurma(Universidade *universidade) {
+
+    cout << "Qual Aluno: " << endl;
+    int escolha = -1;
+    for (int i = 0; i < universidade->getAlunos()->getSize(); i++) {
+        Aluno *aluno = universidade->getAlunos()->get(i);
+        cout << (i + 1) << " ( " << aluno->getCurso()->getDescricao() << " ) " << aluno->getNome() << endl;
+    }
+    
+    cout << "0 - Cancelar" << endl;
+    cin >> escolha;
+    if (escolha == 0) {
+        return;
+    }
+
+    Aluno *aluno = universidade->getAlunos()->get(escolha - 1);
+
+    cout << "Qual Disciplina: " << endl;
+    escolha = -1;
+    for (int i = 0; i < aluno->getCurso()->getDisciplinas()->getSize(); i++) {
+        cout << (i + 1) << " " << aluno->getCurso()->getDisciplinas()->get(i)->getDescricao() << endl;
+    }
+
+    cout << "0 - Cancelar" << endl;
+    cin >> escolha;
+    if (escolha == 0) {
+        return;
+    }
+
+    Disciplina *disciplina = aluno->getCurso()->getDisciplinas()->get(escolha - 1);
+
+    cout << "Qual Turma: " << endl;
+    escolha = -1;
+    for (int i = 0; i < disciplina->getTurmas()->getSize(); i++) {
+        cout << (i + 1) << " " << disciplina->getTurmas()->get(i)->getDescricao() << endl;
+    }
+
+    cout << "0 - Cancelar" << endl;
+    cin >> escolha;
+    if (escolha == 0) {
+        return;
+    }
+
+    disciplina->getTurmas()->get(escolha - 1)->getAlunos()->add(aluno);
+}
 
 int main() {
 
@@ -149,15 +227,17 @@ int main() {
     while (escolhaMenuPrincipal != 0) {
         system("clear");
 
-        cout << "1 - Criar setor" << endl;
-        cout << "2 - Criar Funcionario" << endl;
-        cout << "3 - Criar Curso" << endl;
-        cout << "4 - Criar Disciplina" << endl;
-        cout << "5 - Criar Turma" << endl;
-        cout << "6 - Criar Aluno" << endl;
-        cout << "7 - Listar Setores" << endl;
-        cout << "8 - Listar Funcionarios de um setor" << endl;
-        cout << "0 - Sair" << endl;
+        cout << "1  - Criar setor" << endl;
+        cout << "2  - Criar Funcionario" << endl;
+        cout << "3  - Criar Curso" << endl;
+        cout << "4  - Criar Disciplina" << endl;
+        cout << "5  - Vincular Disciplina ao curso" << endl;
+        cout << "6  - Criar Turma" << endl;
+        cout << "7  - Criar Aluno" << endl;
+        cout << "8  - Vincular Aluno ao Turma" << endl;
+        cout << "9  - Listar Setores" << endl;
+        cout << "10 - Listar Funcionarios de um setor" << endl;
+        cout << "0  - Sair" << endl;
 
         cin >> escolhaMenuPrincipal;
 
@@ -177,16 +257,16 @@ int main() {
                 criarDisciplina(universidade);
                 break;
             case 5:
-                criarTurma(universidade);
-                break;
-            case 6:
                 vincularDisciplinaAoCurso(universidade);
                 break;
+            case 6:
+                criarTurma(universidade);
+                break;
             case 7:
-                //criarAluno(universidade);
+                criarAluno(universidade);
                 break;
             case 8:
-                //criarAluno(universidade);
+                vincularAlunoATurma(universidade);
                 break;
             case 9: {
                 cout << "A universidade tem os seguintes setores: " << endl;

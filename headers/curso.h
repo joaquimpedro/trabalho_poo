@@ -13,11 +13,14 @@ using std::string;
 
 class Disciplina;
 
+class Aluno;
+
 class Curso {
 
     private:
     string descricao;
     List<Disciplina> *disciplinas;
+    List<Aluno> *alunos;
 
     public:
     Curso();
@@ -29,6 +32,8 @@ class Curso {
     void setDescricao(string descricao);
 
     List<Disciplina> *getDisciplinas();
+
+    List<Aluno> *getAlunos();
 
 };
 

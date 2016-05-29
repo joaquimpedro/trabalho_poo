@@ -21,3 +21,11 @@ string Aluno::getMatricula() {
 void Aluno::setMatricula(string matricula) {
     this->matricula = matricula;
 }
+
+Curso *Aluno::getCurso() {
+    return this->curso;
+}
+
+void Aluno::setCurso(Curso *curso) {
+    this->curso = curso;
+}

@@ -4,6 +4,7 @@ Universidade::Universidade() {
     this->setores = new List<Setor>;
     this->cursos = new List<Curso>;
     this->disciplinas = new List<Disciplina>();
+    this->alunos = new List<Aluno>();
 }
 
 string Universidade::getDescricao() {
@@ -41,4 +42,9 @@ List<Curso> *Universidade::getCursos() {
 List<Disciplina> *Universidade::getDisciplinas() {
     return this->disciplinas;
 }
+
+List<Aluno> *Universidade::getAlunos() {
+    return this->alunos;
+}
+
 

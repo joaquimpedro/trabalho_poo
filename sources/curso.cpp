@@ -6,10 +6,12 @@
 
 Curso::Curso() {
     this->disciplinas = new List<Disciplina>();
+    this->alunos = new List<Aluno>();
 }
 
 Curso::Curso(string descricao) {
     this->descricao = descricao;
+    this->alunos = new List<Aluno>();
     this->disciplinas = new List<Disciplina>();
 }
 
@@ -23,4 +25,8 @@ void Curso::setDescricao(string descricao) {
 
 List<Disciplina> *Curso::getDisciplinas() {
     return this->disciplinas;
+}
+
+List<Aluno> *Curso::getAlunos() {
+    return this->alunos;
 }
