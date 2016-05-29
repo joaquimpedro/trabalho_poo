@@ -6,7 +6,7 @@
 #define POO_LIST_H
 
 #include "cstdlib"
-#include "nodelist.cpp"
+#include "../sources/nodelist.cpp"
 
 template<class type>
 class List {

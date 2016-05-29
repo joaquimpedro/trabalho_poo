@@ -2,7 +2,9 @@
 // Created by kindas on 29/05/16.
 //
 
-#include "list.h"
+#include "../headers/list.h"
+#include "../headers/aluno.h"
+#include "../headers/funcionario.h"
 
 template<class type>
 List<type>::List() {
@@ -81,3 +83,34 @@ bool List<type>::contains(type *object) {
     }
     return false;
 }
+
+class Aluno;
+
+class Curso;
+
+class Disciplina;
+
+class Funcionario;
+
+class Setor;
+
+class Turma;
+
+template
+class List<Aluno>;
+
+template
+class List<Curso>;
+
+template
+class List<Disciplina>;
+
+template
+class List<Funcionario>;
+
+template
+class List<Setor>;
+
+template
+class List<Turma>;
+

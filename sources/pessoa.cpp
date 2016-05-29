@@ -1,4 +1,4 @@
-#include "pessoa.h"
+#include "../headers/pessoa.h"
 
 string Pessoa::getNome() {
     return this->nome;

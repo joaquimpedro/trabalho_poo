@@ -2,7 +2,7 @@
 // Created by kindas on 29/05/16.
 //
 
-#include "nodelist.h"
+#include "../headers/nodelist.h"
 
 template<class type>
 NodeList<type>::NodeList(type *object, int index) {

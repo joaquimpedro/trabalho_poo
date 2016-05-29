@@ -1,5 +1,5 @@
-#ifndef TRABALHO_POO_PESSOA_H
-#define TRABALHO_POO_PESSOA_H
+#ifndef POO_PESSOA_H
+#define POO_PESSOA_H
 
 #include <string>
 
@@ -23,4 +23,4 @@ class Pessoa {
     void setIdade(int idade);
 };
 
-#endif //TRABALHO_POO_PESSOA_H
+#endif //POO_PESSOA_H
