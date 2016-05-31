@@ -8,8 +8,9 @@ Turma::Turma() {
     this->alunos = new List<Aluno>();
 }
 
-Turma::Turma(string descricao) {
+Turma::Turma(string descricao, Disciplina *disciplina) {
     this->descricao = descricao;
+    this->disciplina = disciplina;
     this->alunos = new List<Aluno>();
 }
 
@@ -23,4 +24,8 @@ void Turma::setDescricao(string descricao) {
 
 List<Aluno> *Turma::getAlunos() {
     return this->alunos;
+}
+
+Disciplina *Turma::getDisciplina() {
+    return this->disciplina;
 }

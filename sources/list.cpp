@@ -31,21 +31,50 @@ void List<type>::add(type *object) {
 
 template<class type>
 void List<type>::remove(int index) {
-    NodeList<type> *node = this->first;
-    while (node->getIndex() != index && node->getNext() != NULL) {
+    NodeList<type> *node = first;
+    while (node->getIndex() != index && node->getIndex() < this->size - 1) {
         node = node->getNext();
     }
-    
-    NodeList<type> *previous = node->getPrevious();
-    previous->setNext(node->getNext());
-    
+
+    if (node->getObject() == first->getObject()) {
+
+        if (node->getNext() == NULL) {
+            this->first = NULL;
+            this->last = NULL;
+            return;
+        }
+
+        first = node->getNext();
+        first->setIndex(0);
+    } else if (node->getObject() == last->getObject()) {
+        last = node->getPrevious();
+        last->setNext(NULL);
+    } else {
+        node->getPrevious()->setNext(node->getNext());
+    }
+
     delete node;
     this->size--;
-    
-    node = previous;
+
+    node = first;
     while (node->getNext() != NULL) {
         node->getNext()->setIndex(node->getIndex() + 1);
         node = node->getNext();
+    }
+}
+
+
+template<class type>
+void List<type>::remove(type *object) {
+    NodeList<type> *node = this->first;
+    int indexCount = 0;
+    while (indexCount < this->size) {
+        if (node->getObject() == object) {
+            remove(node->getIndex());
+            return;
+        }
+        node = node->getNext();
+        indexCount++;
     }
 }
 
@@ -75,11 +104,13 @@ int List<type>::getSize() {
 template<class type>
 bool List<type>::contains(type *object) {
     NodeList<type> *node = this->first;
-    while (node->getNext() != NULL) {
+    int indexCount = 0;
+    while (indexCount < this->size) {
         if (node->getObject() == object) {
             return true;
         }
         node = node->getNext();
+        indexCount++;
     }
     return false;
 }

@@ -8,14 +8,19 @@
 
 #include "pessoa.h"
 #include "curso.h"
+#include "list.h"
+#include "turma.h"
 
 class Curso;
+
+class Turma;
 
 class Aluno : public Pessoa {
 
     private:
     string matricula;
     Curso *curso;
+    List<Turma> *turmas;
 
     public:
     Aluno();
@@ -29,6 +34,8 @@ class Aluno : public Pessoa {
     Curso *getCurso();
 
     void setCurso(Curso *curso);
+
+    List<Turma> *getTurmas();
 
 };
 

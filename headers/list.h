@@ -22,6 +22,8 @@ class List {
 
     void remove(int index);
 
+    void remove(type *object);
+
     type *get(int index);
 
     int getSize();

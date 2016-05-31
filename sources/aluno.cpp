@@ -5,17 +5,18 @@
 #include "../headers/aluno.h"
 
 Aluno::Aluno() {
-
+    this->turmas = new List<Turma>();
 }
 
 Aluno::Aluno(string nome, int idade, string matricula) {
     this->setNome(nome);
     this->setIdade(idade);
     this->matricula = matricula;
+    this->turmas = new List<Turma>();
 }
 
 string Aluno::getMatricula() {
-    this->matricula;
+    return this->matricula;
 }
 
 void Aluno::setMatricula(string matricula) {
@@ -28,4 +29,8 @@ Curso *Aluno::getCurso() {
 
 void Aluno::setCurso(Curso *curso) {
     this->curso = curso;
+}
+
+List<Turma> *Aluno::getTurmas() {
+    return this->turmas;
 }
