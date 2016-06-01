@@ -41,6 +41,9 @@ void List<type>::remove(int index) {
         if (node->getNext() == NULL) {
             this->first = NULL;
             this->last = NULL;
+
+            delete node;
+            this->size--;
             return;
         }
 
